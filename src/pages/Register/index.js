@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import InputMask from "react-input-mask";
 import { FaArrowLeft } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 import api from "./../../services/api";
 
@@ -24,18 +25,21 @@ export default function Register() {
     const data = {
       name,
       email,
-      whatsapp,
+      whatsapp: whatsapp.replace(/\D/g, ""),
       city,
       uf,
-    }
-    
+    };
+
     try {
-      const response = await api.post('ongs', data)
-    
-      alert(`Seu ID de acesso: ${response.data.id}`)
-      history.push('/')
+      const response = await api.post("ongs", data);
+
+      toast.info(`Seu ID de acesso: ${response.data.id}`);
+
+      setTimeout(() => {
+        history.push("/");
+      }, 5000);
     } catch (err) {
-      alert('Erro no cadastro, tente novamente')
+      toast.error("Erro no cadastro, tente novamente");
     }
   }
 

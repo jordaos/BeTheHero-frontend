@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaSignOutAlt, FaTrash } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 import api from "./../../services/api";
 
@@ -37,7 +38,7 @@ export default function Profile() {
 
       setIncidents(incidents.filter((incident) => incident.id !== id));
     } catch (err) {
-      alert("Erro ao deletar caso, tente novamente.");
+      toast.error("Erro ao deletar caso, tente novamente.");
     }
   }
 

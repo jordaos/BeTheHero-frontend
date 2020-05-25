@@ -1,12 +1,17 @@
-import React from 'react';
+import React from "react";
+import { ToastContainer } from "react-toastify";
 
-import './global.scss';
+import "./global.scss";
 
-import Routes from './routes';
+import Routes from "./routes";
 
 function App() {
   return (
-    <Routes />
+    <div>
+      <Routes />
+
+      <ToastContainer />
+    </div>
   );
 }
 

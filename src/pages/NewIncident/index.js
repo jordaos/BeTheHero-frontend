@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 import api from "./../../services/api";
 
@@ -32,7 +33,7 @@ export default function NewIncident() {
 
       history.push("/profile");
     } catch (err) {
-      alert("Erro ao cadastrar caso, tente novamente.");
+      toast.error("Erro ao cadastrar caso, tente novamente.");
     }
   }
 
